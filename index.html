@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>using js first project</title>
+</head>
+<style>
+    body {
+        background-image: linear-gradient(to right, rgb(167, 48, 48), rgb(46, 127, 46), rgb(104, 37, 191));
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        height: auto;
+        width: 350px;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    button {
+        background-color: rgb(7, 121, 157);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+    }
+
+    button:hover {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .code {
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .code:hover {
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    p {
+        margin: 0;
+    }
+</style>
+
+
+<body>
+    <section>
+        <div class="container">
+            <div class="">
+                <button id="btn1">#8EIDH6</button>
+                <button id="btn2">#566392</button>
+            </div>
+            <h2>copy your code here in just 1 click</h2>
+            <div class="code">
+                <p>background-image-inline</p>
+            </div>
+        </div>
+    </section>
+    <script>
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+
+        const getHexCode = () => {
+            let x = "123456789abcdef";
+            let hexcode = "#";
+            for (let i = 0; i < 6; i++) {
+                hexcode += (x[Math.floor(Math.random() * 16)]);
+            }
+            return hexcode;
+        };
+
+        const clcBtn1 = () => {
+            clr1 = getHexCode();
+            // console.log(clr1);
+            document.body.style.backgroundImage = `linear-gradient(to right, ${clr1}, ${clr2})`;
+            document.querySelector(".code").textContent = `linear-gradient(to right, ${clr1}, ${clr2})`;
+            document.getElementById('btn1').textContent = clr1;
+        };
+
+        const clcBtn2 = () => {
+            clr2 = getHexCode();
+            // console.log(clr2);
+            document.body.style.backgroundImage = `linear-gradient(to right, rgba(133,3,22,11), ${clr1}, ${clr2})`;
+            document.querySelector(".code").textContent = `linear-gradient(to right, rgba(133,3,22,11), ${clr1}, ${clr2})`;
+            document.getElementById('btn2').textContent = clr2;
+        };
+
+
+        btn1.addEventListener('click', clcBtn1);
+        btn2.addEventListener('click', clcBtn2)
+
+        document.querySelector(".code").addEventListener('click', () => {
+            navigator.clipboard.writeText(document.querySelector(".code").textContent);
+            alert('copied')
+        })
+    </script>
+</body>
+
+</html>
